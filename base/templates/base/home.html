@@ -1,0 +1,9 @@
+
+{% block content %}
+{% for host in hosts %}
+<div>
+    <div>{{host.name}}</div>
+    <span>{{host.method}}  --  {{host.server}}:{{host.port}}</span>
+</div>
+{% endfor %}
+{% endblock content %}

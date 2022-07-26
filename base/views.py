@@ -4,4 +4,7 @@ from .models import Host, Method
 
 
 def home(request):
-    return HttpResponse("Working!")
+    hosts = Host.objects.all()
+    context = {'hosts': hosts}
+
+    return render(request, 'base/home.html', context)
