@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class Methods(models.Model):
+class Method(models.Model):
     methods = models.TextField()
     description = models.TextField()
 
@@ -10,11 +10,11 @@ class Methods(models.Model):
         return self.methods
 
 
-class Hosts(models.Model):
+class Host(models.Model):
     name = models.TextField()
     server = models.TextField(null=True, blank=True)
     port = models.IntegerField()
-    method = models.ForeignKey(Methods, on_delete=models.SET_NULL, null=True)
+    method = models.ForeignKey(Method, on_delete=models.SET_NULL, null=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
