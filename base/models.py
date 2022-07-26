@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 
 class Method(models.Model):
-    methods = models.TextField()
+    methods = models.CharField(max_length=15)
     description = models.TextField()
 
     def __str__(self):
@@ -11,8 +11,8 @@ class Method(models.Model):
 
 
 class Host(models.Model):
-    name = models.TextField()
-    server = models.TextField(null=True, blank=True)
+    name = models.CharField(max_length=50)
+    server = models.CharField(max_length=50)
     port = models.IntegerField()
     method = models.ForeignKey(Method, on_delete=models.SET_NULL, null=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
