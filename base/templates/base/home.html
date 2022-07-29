@@ -1,9 +1,35 @@
+{% extends 'index.html' %}
 
 {% block content %}
-{% for host in hosts %}
-<div>
-    <div>{{host.name}}</div>
-    <span>{{host.method}}  --  {{host.server}}:{{host.port}}</span>
-</div>
-{% endfor %}
+    <section id="questions" class="p-5">
+      <div class="container">
+        <h2 class="text-center mb-4">Available Hosts</h2>
+        <div class="accordion accordion-flush" id="questions">
+          <!-- Items -->
+          {% for host in hosts %}
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#question-{{host.id}}"
+              >
+                {{host.name}}  --  {{host.server}}:{{host.port}}
+              </button>
+            </h2>
+            <div
+              id="question-{{host.id}}"
+              class="accordion-collapse collapse"
+              data-bs-parent="#questions"
+            >
+              <div class="accordion-body">
+                <p>{{host.description}}</p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
 {% endblock content %}
