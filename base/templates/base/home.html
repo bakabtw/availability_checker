@@ -24,7 +24,19 @@
               data-bs-parent="#questions"
             >
               <div class="accordion-body">
-                <p>{{host.description}}</p>
+                <ul class="list-group list-group-flush">
+                {% for status in statuses %}
+                  {% if status.server_id.id == host.id %}
+                  <li class="list-group-item"><span class="fw-bold">ID:</span> {{status.server_id.id}}</li>
+                  <li class="list-group-item"><span class="fw-bold">Status:</span> {{status.status}}</li>
+                  <li class="list-group-item"><span class="fw-bold">Response code:</span> {{status.response_code}}</li>
+                  <li class="list-group-item"><span class="fw-bold">URL:</span> {{status.url}}</li>
+                  <li class="list-group-item"><span class="fw-bold">Content-type:</span> {{status.content_type}}</li>
+                  <li class="list-group-item"><span class="fw-bold">Content-length:</span> {{status.content_length}}</li>
+                  <li class="list-group-item"><span class="fw-bold">Last check:</span> {{status.timestamp}}</li>
+                  {% endif %}
+                {% endfor %}
+                </ul>
               </div>
             </div>
           </div>
